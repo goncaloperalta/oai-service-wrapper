@@ -2,7 +2,7 @@
 
 main(){
     chmod +x start-oai.sh
-    cp install.sh /usr/local/bin/
+    cp start-oai.sh /usr/local/bin/
     chmod +x oai-ue.service
     cp oai-ue.service /etc/systemd/system/
     
