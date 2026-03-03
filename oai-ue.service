@@ -1,0 +1,14 @@
+[Unit]
+Description=OAI UE Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/startOAI.sh
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
