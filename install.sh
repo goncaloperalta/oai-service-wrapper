@@ -7,13 +7,9 @@ main(){
     fi
 
     cp configs/oai-ue /etc/logrotate.d/
-
-    chmod +x scripts/start-oai.sh
     cp scripts/start-oai.sh /usr/local/bin/
-
     cp configs/oai-ue.service /etc/systemd/system/
 
-    chmod +x watchdogs/check-tunnel.sh
     cp watchdogs/check-tunnel.sh /usr/local/bin/
     (crontab -l ; echo "*/1 * * * * /usr/local/bin/check-tunnel.sh") | crontab -
 
