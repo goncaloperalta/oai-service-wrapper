@@ -9,6 +9,8 @@ User=root
 ExecStart=/usr/local/bin/start-oai.sh
 Restart=always
 RestartSec=5s
+StandardOutput=append:/var/log/oai-ue.log
+StandardError=inherit
 
 [Install]
 WantedBy=multi-user.target

@@ -12,6 +12,7 @@ main(){
 
     crontab -l | grep -v "/usr/local/bin/check-tunnel.sh" | crontab -
     
+    rm -f /etc/logrotate.d/oai-ue
     rm -f /usr/local/bin/start-oai.sh
     rm -f /usr/local/bin/check-tunnel.sh
     rm -f /etc/systemd/system/oai-ue.service

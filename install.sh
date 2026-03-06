@@ -6,6 +6,8 @@ main(){
        exit 1
     fi
 
+    cp oai-ue /etc/logrotate.d/
+    
     chmod +x start-oai.sh
     cp start-oai.sh /usr/local/bin/
     cp oai-ue.service /etc/systemd/system/
