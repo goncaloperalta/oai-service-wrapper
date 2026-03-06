@@ -1,8 +1,12 @@
-```bash
-sudo ./install.sh           # installs systemd service and starts it
-sudo ./uninstall.sh         # removes all installed services
-check-tunnel.sh             # checks if the oai tunnel exists, if not restarts the process
-start-oai.sh                # script to start oai
-oai-ue                      # logrotate file
-oai-ue.service              # systemd service file
+```
+├── configs
+|   ├── oai-ue            # logrotate config file
+|   └── oai-ue.service    # systemd service
+├── scripts
+|   └── start-oai.sh      # script to start oai
+├── watchdogs
+|   └── check-tunnel.sh   # polls oai tunnel
+├── README.md
+├── install.md            # install script, run as sudo 
+└── uninstall.md          # uninstall script, run as sudo
 ```
