@@ -6,14 +6,15 @@ main(){
        exit 1
     fi
 
-    cp oai-ue /etc/logrotate.d/
-    
-    chmod +x start-oai.sh
-    cp start-oai.sh /usr/local/bin/
-    cp oai-ue.service /etc/systemd/system/
+    cp configs/oai-ue /etc/logrotate.d/
 
-    chmod +x check-tunnel.sh
-    cp check-tunnel.sh /usr/local/bin/
+    chmod +x scripts/start-oai.sh
+    cp scripts/start-oai.sh /usr/local/bin/
+
+    cp configs/oai-ue.service /etc/systemd/system/
+
+    chmod +x watchdogs/check-tunnel.sh
+    cp watchdogs/check-tunnel.sh /usr/local/bin/
     (crontab -l ; echo "*/1 * * * * /usr/local/bin/check-tunnel.sh") | crontab -
 
     systemctl daemon-reload

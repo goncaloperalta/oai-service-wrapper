@@ -1,5 +1,3 @@
-This repository creates a systemd service to run the `start-oai.sh` script.
-
 ```bash
 sudo ./install.sh           # installs systemd service and starts it
 sudo ./uninstall.sh         # removes all installed services

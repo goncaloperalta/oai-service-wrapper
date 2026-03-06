@@ -1,10 +1,13 @@
 /var/log/oai-ue.log {
-    daily
-    rotate 7
+    su root root
+    hourly
+    rotate 3
     size 100M
     compress
     delaycompress
     missingok
     notifempty
     copytruncate
+    dateext
+    dateformat %s
 }
