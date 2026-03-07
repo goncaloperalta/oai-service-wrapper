@@ -2,16 +2,16 @@
 
 main(){
     if ! [ $(id -u) = 0 ]; then
-       echo "Must run as root"
-       exit 1
+        echo "Must run as root"
+        exit 1
     fi
 
     cp configs/oai-ue /etc/logrotate.d/
-    cp scripts/start-oai.sh /usr/local/bin/
     cp configs/oai-ue.service /etc/systemd/system/
-
+    cp scripts/start-oai.sh /usr/local/bin/
     cp watchdogs/check-tunnel.sh /usr/local/bin/
-    (crontab -l ; echo "*/1 * * * * /usr/local/bin/check-tunnel.sh") | crontab -
+    (crontab -l ; echo "* * * * * /usr/local/bin/check-tunnel.sh") | crontab -
+    ln -s /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 
     systemctl daemon-reload
     systemctl enable oai-ue.service

@@ -2,12 +2,12 @@
     su root root
     hourly
     rotate 3
-    size 100M
+    maxsize 100M
     compress
     delaycompress
     missingok
     notifempty
     copytruncate
     dateext
-    dateformat %s
+    dateformat -%s
 }
