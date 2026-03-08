@@ -1,15 +1,15 @@
 [Unit]
-Description=OAI UE Service
+Description=OAI %i service
 After=network.target
 StartLimitIntervalSec=0
 
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/local/bin/start-oai.sh
+ExecStart=/usr/local/bin/start-oai.sh %i
 Restart=always
 RestartSec=5s
-StandardOutput=append:/var/log/oai-ue.log
+StandardOutput=append:/var/log/oai.log
 StandardError=inherit
 
 [Install]

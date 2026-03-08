@@ -1,23 +1,54 @@
 #!/bin/bash
 
+function show_help(){
+    echo "Usage: $0 [OPTION]"
+    echo "Options:"
+    echo "  -ue, --ue   Install UE service"
+    echo "  -gnb, --gnb Install gNB service"
+    echo "  -h, --help  Show help"
+}
+
 main(){
     if ! [ $(id -u) = 0 ]; then
         echo "Must run as root"
         exit 1
     fi
 
+    local node=""
+
+    while [[ "$#" -gt 0 ]]; do
+        case $1 in
+            -ue  | --ue) node="ue" ;;
+            -gnb | --gnb) node="gnb" ;;
+            -h   | --help) show_help; exit 0 ;;
+            *) show_help; exit 1 ;;
+        esac
+        shift
+    done
+
+    if [ -z "$node" ]; then
+        show_help
+        exit 1
+    fi
+
     cp configs/oai-stats.json /var/log/
-    cp configs/oai-ue /etc/logrotate.d/
-    cp configs/oai-ue.service /etc/systemd/system/
+    cp configs/oai-logrotate /etc/logrotate.d/
+    cp configs/oai@.service /etc/systemd/system/
     cp scripts/* /usr/local/bin/
-    cp watchdogs/* /usr/local/bin/
-    (crontab -l ; echo "* * * * * /usr/local/bin/check-tunnel.sh") | crontab -
-    (crontab -l ; echo "* * * * * /usr/local/bin/check-late-packets.sh") | crontab -
-    ln -s /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
+
+    if [ "$node" = "ue" ]; then
+        cp watchdogs/check-tunnel.sh /usr/local/bin/
+        (crontab -l ; echo "* * * * * /usr/local/bin/check-tunnel.sh") | crontab -
+    fi
+
+    cp watchdogs/check-late-packets.sh /usr/local/bin/
+    (crontab -l ; echo "* * * * * /usr/local/bin/check-late-packets.sh $node") | crontab -
+
+    ln -sf /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 
     systemctl daemon-reload
-    systemctl enable oai-ue.service
-    systemctl start oai-ue.service
+    systemctl enable oai@$node
+    systemctl start oai@$node
 }
 
 main "$@"

@@ -1,8 +1,8 @@
 ```
 ├── configs
+|   ├── oai-logrotate        # logrotate config file
 |   ├── oai-stats.json       # stat tracker for crashes
-|   ├── oai-ue               # logrotate config file
-|   └── oai-ue.service       # systemd service
+|   └── oai@.service         # systemd service
 ├── scripts
 |   ├── oai-stats.sh         # script to manage stat counter
 |   └── start-oai.sh         # script to start oai

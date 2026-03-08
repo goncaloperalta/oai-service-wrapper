@@ -1,4 +1,4 @@
-/var/log/oai-ue.log {
+/var/log/oai.log {
     su root root
     hourly
     rotate 3
