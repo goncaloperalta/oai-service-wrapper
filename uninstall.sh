@@ -15,6 +15,7 @@ main(){
     rm -f /etc/cron.hourly/logrotate
     rm -f /etc/logrotate.d/oai-ue
     rm -f /usr/local/bin/start-oai.sh
+    rm -f /usr/local/bin/oai-stats.sh
     rm -f /usr/local/bin/check-tunnel.sh
     rm -f /usr/local/bin/check-late-packets
     rm -f /etc/systemd/system/oai-ue.service

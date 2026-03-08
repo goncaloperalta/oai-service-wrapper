@@ -6,9 +6,10 @@ main(){
         exit 1
     fi
 
+    cp configs/oai-stats.json /var/log/
     cp configs/oai-ue /etc/logrotate.d/
     cp configs/oai-ue.service /etc/systemd/system/
-    cp scripts/start-oai.sh /usr/local/bin/
+    cp scripts/* /usr/local/bin/
     cp watchdogs/* /usr/local/bin/
     (crontab -l ; echo "* * * * * /usr/local/bin/check-tunnel.sh") | crontab -
     (crontab -l ; echo "* * * * * /usr/local/bin/check-late-packets.sh") | crontab -
