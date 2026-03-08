@@ -1,12 +1,15 @@
 ```
 ├── configs
-|   ├── oai-ue            # logrotate config file
-|   └── oai-ue.service    # systemd service
+|   ├── oai-stats.json       # stat tracker for crashes
+|   ├── oai-ue               # logrotate config file
+|   └── oai-ue.service       # systemd service
 ├── scripts
-|   └── start-oai.sh      # script to start oai
+|   ├── oai-stats.sh         # script to manage stat counter
+|   └── start-oai.sh         # script to start oai
 ├── watchdogs
-|   └── check-tunnel.sh   # polls oai tunnel
+|   ├── check-late-packets   # looks for an high ammount of late packets
+|   └── check-tunnel.sh      # looks for oai tunnel interface
+├── install.md               # install script, run as sudo 
 ├── README.md
-├── install.md            # install script, run as sudo 
-└── uninstall.md          # uninstall script, run as sudo
+└── uninstall.md             # uninstall script, run as sudo
 ```
