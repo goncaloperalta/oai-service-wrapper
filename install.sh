@@ -9,8 +9,9 @@ main(){
     cp configs/oai-ue /etc/logrotate.d/
     cp configs/oai-ue.service /etc/systemd/system/
     cp scripts/start-oai.sh /usr/local/bin/
-    cp watchdogs/check-tunnel.sh /usr/local/bin/
+    cp watchdogs/* /usr/local/bin/
     (crontab -l ; echo "* * * * * /usr/local/bin/check-tunnel.sh") | crontab -
+    (crontab -l ; echo "* * * * * /usr/local/bin/check-late-packets.sh") | crontab -
     ln -s /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 
     systemctl daemon-reload
