@@ -6,3 +6,5 @@ if [ "$1" = "ue" ]; then
 elif [ "$1" = "gnb" ]; then
     ./nr-softmodem -O ../../../../oai/conf_files/gnb.sa.band28.fr1.25PRB.rfsim.conf --rfsim
 fi
+
+/usr/local/bin/oai-stats.sh systemd_restart
