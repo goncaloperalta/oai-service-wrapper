@@ -31,6 +31,13 @@ main(){
         exit 1
     fi
 
+    if ! command -v ts > /dev/null 2>&1; then
+        apt install moreutils -y
+    fi
+    if ! command -v jq > /dev/null 2>&1; then
+        apt install jq -y
+    fi
+
     cp configs/oai-stats.json /var/log/
     cp configs/oai-logrotate /etc/logrotate.d/
     cp configs/oai@.service /etc/systemd/system/
