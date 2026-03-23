@@ -1,5 +1,6 @@
 ```
 ├── configs
+|   ├── logrotate               # setup hourly logrotate crontab
 |   ├── oai-logrotate           # logrotate config file
 |   ├── oai-stats.json          # stat tracker for crashes
 |   └── oai@.service            # systemd service

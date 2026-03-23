@@ -41,6 +41,7 @@ main(){
     cp configs/oai-stats.json /var/log/
     cp configs/oai-logrotate /etc/logrotate.d/
     cp configs/oai@.service /etc/systemd/system/
+    cp configs/logrotate /etc/cron.hourly/
     cp scripts/* /usr/local/bin/
 
     if [ "$node" = "ue" ]; then
@@ -50,8 +51,6 @@ main(){
 
     cp watchdogs/check-late-packets.sh /usr/local/bin/
     (crontab -l ; echo "* * * * * /usr/local/bin/check-late-packets.sh $node") | crontab -
-
-    ln -sf /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 
     systemctl daemon-reload
     systemctl enable oai@$node
