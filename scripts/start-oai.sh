@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo -e "\n\033[0;34m[Systemd Service]\033[0m Starting OAI\033[0m\n"
+
 cd /home/"user"/openairinterface5g/cmake_targets/ran_build/build
 if [ "$1" = "ue" ]; then 
     # Add | ts "%Y-%m-%d %H:%M:%S" at the end of the script for timestamps on log file

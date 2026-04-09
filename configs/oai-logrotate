@@ -1,8 +1,8 @@
 /var/log/oai.log {
     su root root
     hourly
-    rotate 3
-    maxsize 100M
+    rotate 10
+    maxsize 500M
     compress
     delaycompress
     missingok
