@@ -46,11 +46,11 @@ main(){
 
     if [ "$node" = "ue" ]; then
         cp watchdogs/check-tunnel.sh /usr/local/bin/
-        (crontab -l ; echo "* * * * * /usr/local/bin/check-tunnel.sh") | crontab -
+        (crontab -l ; echo "* * * * * /usr/local/bin/check-tunnel.sh >> /var/log/oai.log") | crontab -
     fi
 
     cp watchdogs/check-late-packets.sh /usr/local/bin/
-    (crontab -l ; echo "* * * * * /usr/local/bin/check-late-packets.sh $node") | crontab -
+    (crontab -l ; echo "* * * * * /usr/local/bin/check-late-packets.sh $node >> /var/log/oai.log") | crontab -
 
     systemctl daemon-reload
     systemctl enable oai@$node
